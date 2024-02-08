@@ -1,5 +1,6 @@
 var timer = 60;
 var score = 0;
+var hint = 0;
 
 function increaseScore() {
     score += 10;
@@ -7,7 +8,7 @@ function increaseScore() {
 }
 
 function getHint() {
-    var hint = Math.floor(Math.random() * 4);
+    hint = Math.floor(Math.random() * 4);
     document.querySelector("#hitcount").textContent = hint;
 }
 
@@ -30,13 +31,21 @@ function runTimer() {
         }
         else {
             clearInterval(stoptime);
+            document.querySelector("#panelbuttom").innerHTML = "GameOver!"
         }
     }, 1000);
 }
 
-increaseScore();
-increaseScore();
-increaseScore();
+
+document.querySelector("#panelbuttom").addEventListener("click",function (dats){
+    var clicking = Number(dats.target.textContent);
+    if (hint === clicking){
+        makeBubble();
+        getHint();
+        increaseScore();
+    }
+});
+
 getHint();
 runTimer();
 makeBubble();

@@ -69,6 +69,7 @@ html,body{
     display: flex;
     align-items: center;
     justify-content: center;
+    font-weight: 900;
     gap: 10px;
     flex-wrap: wrap;
     padding: 10px;
